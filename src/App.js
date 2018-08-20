@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import 'raf/polyfill';
+import 'core-js/es6/map';
+import 'core-js/es6/set';
 
 class App extends Component {
   render() {
