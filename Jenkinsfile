@@ -1,18 +1,15 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:6-alpine'
-            args '-p 3000:3000 -p 5000:5000'
-        }
-    }
+    agent any
+
+    tools { nodejs "node" }
+
     environment {
         CI = 'true'
     }
     stages {
         stage('Build') {
             steps {
-                sh 'whoami'
-                sh 'npm install --unsafe-perm=true --allow-root'
+                sh 'npm install'
             }
         }
         stage('Test') {
