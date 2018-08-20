@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm cache clean --force'
+                sh 'chown -R $USER:$(id -gn $USER) /.config'
                 sh 'npm config set unsafe-perm=true'
                 sh 'npm install'
             }
