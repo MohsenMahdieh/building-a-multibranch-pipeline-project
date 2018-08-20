@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo whoami'
+                sh 'whoami'
                 sh 'npm install --unsafe-perm=true --allow-root'
             }
         }
