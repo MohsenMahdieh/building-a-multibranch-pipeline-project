@@ -1,9 +1,25 @@
 pipeline {
     agent {
-        docker {
-            image 'node:9-alpine'
-            args '-p 3000:3000 -p 5000:5000'
-        }
+        kubernetes {
+      label 'multi-branch-nodejs'
+      defaultContainer 'node'
+      yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+labels:
+  component: multi-branch-nodejs
+spec:
+  # Use service account that can deploy to all namespaces
+  serviceAccountName: cd-jenkins
+  containers:
+  - name: node
+    image: node:9-alpine
+    command:
+    - cat
+    tty: true
+"""
+}
     }
     environment {
         CI = 'true'
