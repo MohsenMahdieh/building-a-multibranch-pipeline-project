@@ -27,9 +27,9 @@ spec:
     stages {
         stage('Build') {
             steps {
-                sh 'chown -R $USER:$(id -gn $USER) /.config'
+                //sh 'chown -R $USER:$(id -gn $USER) /.config'
                 sh 'npm config set unsafe-perm=true'
-                sh 'npm install'
+                sh 'npm install -g'
             }
         }
         stage('Test') {
